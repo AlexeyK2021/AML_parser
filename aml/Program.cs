@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Aml.Engine.CAEX;
 using Aml.Engine.CAEX.Extensions;
+using AML.Models.InternalElement;
 using AML.Models.Role;
 using Attribute = AML.Models.Attribute;
 
@@ -73,8 +75,51 @@ class Hello
         //     Console.WriteLine(rcll.ToString());
         // }
 
-        var roleRepository = new RoleRepository(file);
-        Console.WriteLine(roleRepository.getRolesNames());
+        // var roleRepository = new RoleRepository(file);
+        // Console.WriteLine(roleRepository.getRolesNames());
 
+        foreach (var instanceHierarchy in file.CAEXFile.InstanceHierarchy)
+        {
+            var ieList = getChildren(instanceHierarchy);
+            foreach (var ie in ieList)
+            {
+                Console.WriteLine(ie.ToString());
+            }
+        }
+    }
+
+    private static List<Attribute> getAttrs(CAEXWrapper caex)
+    {
+        var attrsList = new List<Attribute>();
+        
+        foreach (var attrs in caex.Descendants<AttributeType>())
+        // foreach (var attrs in caex.CAEXChildren("Attribute"))
+        {
+            // Console.WriteLine($"{attrs}");
+            // Console.WriteLine($"{caex} -> {attrs.Name()}={attrs.Value}");
+            foreach (var attrName in caex.CAEXChildren("Attribute"))
+            {
+                if (attrName.Name() == attrs.Name())
+                {
+                    // Console.WriteLine($"{caex} -> {attrs.Name()}={attrs.Value}");
+                    attrsList.Add(new Attribute(attrs.Name(), attrs.Value));
+                }
+                
+            }
+        }
+        // caex.TagName;
+        return attrsList;
+    }
+
+    private static List<InternalElement> getChildren(CAEXWrapper caex)
+    {
+        var ieList = new List<InternalElement>();
+        foreach (var i in caex.CAEXChildren("InternalElement"))
+        {
+            // Console.WriteLine($"{caex} -> {i}");
+            ieList.Add(new InternalElement(i.Name(), getChildren(i),getAttrs(i)));
+        }
+
+        return ieList;
     }
 }

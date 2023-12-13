@@ -1,6 +1,6 @@
 ﻿<CAEXFile SchemaVersion="3.0" FileName="TestAML.aml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.dke.de/CAEX" xsi:schemaLocation="http://www.dke.de/CAEX CAEX_ClassModel_V.3.0.xsd">
   <SuperiorStandardVersion>AutomationML 2.10</SuperiorStandardVersion>
-  <SourceDocumentInformation OriginName="AutomationML Editor" OriginID="916578CA-FE0D-474E-A4FC-9E1719892369" OriginVersion="5.6.10.0" LastWritingDateTime="2023-11-19T19:38:58.5737751+03:00" OriginProjectID="unspecified" OriginProjectTitle="unspecified" OriginRelease="5.6.10.0" OriginVendor="AutomationML e.V." OriginVendorURL="www.AutomationML.org" />
+  <SourceDocumentInformation OriginName="AutomationML Editor" OriginID="916578CA-FE0D-474E-A4FC-9E1719892369" OriginVersion="5.6.10.0" LastWritingDateTime="2023-12-13T18:56:20.2151942+03:00" OriginProjectID="unspecified" OriginProjectTitle="unspecified" OriginRelease="5.6.10.0" OriginVendor="AutomationML e.V." OriginVendorURL="www.AutomationML.org" />
   <InstanceHierarchy Name="MyHierarchy">
     <Version>0</Version>
     <InternalElement Name="Line1" ID="3470580f-0142-404c-aa0b-20e4227a540d">
@@ -15,7 +15,12 @@
           <ExternalInterface Name="PowerSupply" ID="c736415d-f986-45f1-b39f-5a04cdc83d24" RefBaseClassPath="MyInterfaceClassLib/IPowerSupply" />
         </ExternalInterface>
         <InternalElement Name="MyRobot1" ID="385b8026-26e7-44f5-a749-0dc56f9c857c" RefBaseSystemUnitPath="MySystemUnitClassLib/MyRobot">
-          <Attribute Name="Weight" AttributeDataType="xs:string" />
+          <Attribute Name="Weight" AttributeDataType="xs:string">
+            <Value>150</Value>
+          </Attribute>
+          <Attribute Name="Height" AttributeDataType="xs:string">
+            <Value>2</Value>
+          </Attribute>
           <ExternalInterface Name="PowerSupply" ID="6bd5e924-38a9-4c78-b76e-105e250a7684" RefBaseClassPath="MyInterfaceClassLib/IPowerSupply" />
           <InternalElement Name="Hand" ID="a284c633-f255-4c8f-9c44-b70616758a73">
             <InternalElement Name="Sensor" ID="d4a60906-d694-40eb-939d-3f5a38045b43" />
@@ -24,7 +29,12 @@
           <RoleRequirements RefBaseRoleClassPath="MyRoleClassLib/GenericRobot" />
         </InternalElement>
         <InternalElement Name="MyRobot2" ID="c5e11187-bf6f-4eee-a6b4-6d8ac79a39fa" RefBaseSystemUnitPath="MySystemUnitClassLib/MyRobot">
-          <Attribute Name="Weight" AttributeDataType="xs:string" />
+          <Attribute Name="Weight" AttributeDataType="xs:string">
+            <Value>210</Value>
+          </Attribute>
+          <Attribute Name="Height" AttributeDataType="xs:string">
+            <Value>3</Value>
+          </Attribute>
           <ExternalInterface Name="PowerSupply" ID="985b7d6f-9f1c-47cb-9a2c-b03d407d5348" RefBaseClassPath="MyInterfaceClassLib/IPowerSupply" />
           <InternalElement Name="Hand" ID="f7543813-0840-44c6-bd71-462b52ed56f3">
             <InternalElement Name="Sensor" ID="6ef9bc05-e715-4317-91cc-a6ad658cd029" />
@@ -33,6 +43,9 @@
           <RoleRequirements RefBaseRoleClassPath="MyRoleClassLib/GenericRobot" />
         </InternalElement>
       </InternalElement>
+    </InternalElement>
+    <InternalElement Name="Line2" ID="13aea2bd-2bd5-429a-95fa-917073096b28">
+      <InternalElement Name="Line21" ID="daa6516d-c47d-4c58-ae15-d18180bdce67" />
     </InternalElement>
   </InstanceHierarchy>
   <InterfaceClassLib Name="MyInterfaceClassLib">

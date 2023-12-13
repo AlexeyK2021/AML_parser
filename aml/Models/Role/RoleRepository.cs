@@ -37,6 +37,19 @@ public class RoleRepository
         // return roleClassChildrenList;
     }
 
+    private List<String> getNames(XElement xElement)
+    {
+        var list = new List<String>();
+        // list.Add(xElement.Name.ToString());
+        // list.Add(xElement.Parent.Elements());
+
+        foreach (var xe in xElement.Parent.Elements())
+        {
+            list.Add(xe.Name.ToString());
+        }
+        return list;
+    }
+
     private List<Attribute> AttrList(RoleFamilyType role)
     {
         var attrList = new List<Attribute>();
@@ -52,24 +65,24 @@ public class RoleRepository
     {
         foreach (var rcl in file.CAEXFile.RoleClassLib)
         {
-            var roleClassList = new List<RoleClass>();
-
-            foreach (var role in rcl.RoleClass)
-            {
-                
-                roleClassList.Add(new RoleClass(name: role.Name, attributes: AttrList(role)));
-
-                // foreach (var subroles in role.RoleClass.Elements)
-                // {
-                //     Console.WriteLine(subroles.Name);
-                // }
-            }
-
-            roleClassLibsList.Add(new RoleClassLib(
-                name: rcl.Name(),
-                version: rcl.Version,
-                rolesList: roleClassList)
-            );
+            // var roleClassList = new List<RoleClass>();
+            //
+            // foreach (var role in rcl.RoleClass)
+            // {
+            //     
+            //     roleClassList.Add(new RoleClass(name: role.Name, attributes: AttrList(role)));
+            //     getRoleClass(role);
+            //     foreach (var subroles in role.RoleClass.Elements)
+            //     {
+            //         Console.WriteLine(subroles.Name);
+            //     }
+            // }
+            //
+            // roleClassLibsList.Add(new RoleClassLib(
+            //     name: rcl.Name(),
+            //     version: rcl.Version,
+            //     rolesList: roleClassList)
+            // );
         }
     }
 
