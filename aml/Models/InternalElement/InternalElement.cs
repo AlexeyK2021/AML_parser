@@ -38,8 +38,8 @@ public class InternalElement
         }
         return $"[" +
                $"name={name} " +
-               $"children={childrenList.ToString()} " +
-               $"attributes={attrsList.ToString()}"+
+               $"attributes=[{attrsList.ToString()}] "+
+               $"children=[{childrenList.ToString()}]" +
                $"]";
     }
 }
